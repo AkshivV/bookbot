@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 from stats import count_occurrence
 from stats import dict_to_sorted_list
@@ -12,7 +13,10 @@ def sort_on(items):
     return items["num"]
 
 def main():
-    path = "books/frankenstein.txt"
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    path = sys.argv[1]
     text = get_books_test(path)
     num = count_words(text)
     chars_dict = count_occurrence(text)
